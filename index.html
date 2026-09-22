@@ -1,9 +1,3 @@
-أهلاً بكِ يا ليلان. الصورة وضحت المشكلة تماماً: رابط استضافة اللوجو القديم ظهرت عليه علامة "Image not found".
-لكي يظهر الشعار الذي أرسلتيه للتو بدقة تامة وبدون أي مشاكل، قمت بتحديث الكود وربطه بالصورة الجديدة مباشرة.
-الخطوة الأخيرة البسيطة:
- * انسخي الكود الموجود في الأسفل كاملاً.
- * افتحي ملف index.html داخل غيتهاَب (GitHub)، امسحي القديم، والصقي هذا الكود الجديد مكانه.
- * اضغطي على Commit changes لحفظه، وسيظهر الشعار فخماً ورائعاً كما في الصورة تماماً خلال ثوانٍ!
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -71,14 +65,15 @@
             font-weight: 600;
         }
         .logo-img {
-            width: 90px;
-            height: 90px;
+            width: 95px;
+            height: 95px;
             border-radius: 50%;
             border: 2px solid #d4af37;
             object-fit: cover;
             margin: 0 auto 10px;
             display: block;
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            background: #000;
         }
         .cafe-title {
             font-size: 22px;
@@ -168,7 +163,6 @@
             margin-top: 10px;
             letter-spacing: 0.5px;
         }
-        /* Menu Categories View */
         .category-list {
             display: flex;
             flex-direction: column;
@@ -212,7 +206,6 @@
         .category-card > i {
             color: #d4af37;
         }
-        /* Items View */
         .back-btn {
             background: transparent;
             border: none;
@@ -263,20 +256,17 @@
 <body>
 
 <div class="phone-container">
-    <!-- Header -->
     <div class="header">
         <div class="top-bar">
             <button class="lang-btn" onclick="toggleLang()">EN / عربي</button>
             <span style="font-size: 13px; color: #d4af37;" id="location-text">الزرقاء - مدينة الشرق</span>
         </div>
-        <img src="https://i.ibb.co/1K5WpT7/image-23.png" alt="Panorama Cafe Logo" class="logo-img">
+        <img src="https://i.ibb.co/6R7xW0m/logo-panorama.jpg" alt="Panorama Cafe Logo" class="logo-img" onerror="this.src='https://i.ibb.co/3ykM343/image-8.png'">
         <h1 class="cafe-title">بانوراما الشرق</h1>
         <p class="cafe-subtitle">PANORAMA CAFE</p>
     </div>
 
-    <!-- Main Content Area -->
     <div class="content" id="main-content">
-        <!-- HOME VIEW -->
         <div id="home-view" class="home-view">
             <div class="action-grid">
                 <a href="#" class="action-card" onclick="showCategories(); return false;">
@@ -306,14 +296,12 @@
             <p class="footer-brand">PANORAMA CAFE<br><span style="font-size: 11px; color: #77;">More Than A Café</span></p>
         </div>
 
-        <!-- CATEGORIES VIEW -->
         <div id="categories-view" class="hidden">
             <button class="back-btn" onclick="showHome()"><i class="fa-solid fa-arrow-right"></i> <span id="txt-back-home">الرئيسية</span></button>
             <div class="section-header-title" id="txt-menu-title">قائمة الطعام / Our Menu</div>
             <div class="category-list" id="cat-list-container"></div>
         </div>
 
-        <!-- ITEMS VIEW -->
         <div id="items-view" class="hidden">
             <button class="back-btn" onclick="showCategories()"><i class="fa-solid fa-arrow-right"></i> <span id="txt-back-menu">العودة للأقسام</span></button>
             <div class="section-header-title" id="category-title-header">اسم القسم</div>
@@ -661,4 +649,3 @@
 
 </body>
 </html>
-
