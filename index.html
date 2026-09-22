@@ -4,29 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بانوراما الشرق - Panorama Cafe</title>
-    <!-- استدعاء خطوط قوية: خط رقعة تقليدي للعربي وخط مائل مشلبك للإنجليزي -->
-    <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=Great+Vibes&family=Marhey:wght@500;700&display=swap" rel="stylesheet">
+    <!-- استدعاء الخطوط -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Great+Vibes&family=Marhey:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-        /* تطبيق خط الرقعة الكلاسيكي والجميل للعربي بالكامل مع تأثير التوهج */
-        body, html, h1, h2, h3, span, p, button, a {
-            font-family: 'Marhey', 'Reem Kufi', sans-serif !important;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 0 0 20px rgba(212, 175, 55, 0.3);
+            font-family: 'Amiri', serif; /* الخط الأساسي الكلاسيكي والمرتب لكل المنيو وباقي الصفحة */
         }
         
-        /* تخصيص النصوص الإنجليزية لتكون بخط مائل مشلبك وفخم وبدون جلو (بدون توهج) */
-        .en-font, .cafe-subtitle, .footer-brand span, .item-price, [lang="en"] {
-            font-family: 'Great Vibes', cursive !important;
-            font-size: 1.3em !important;
-            text-shadow: none !important;
-            letter-spacing: 1px;
-        }
-
         body {
             background-color: #0b0b0b;
             color: #f5f5f5;
@@ -35,6 +23,28 @@
             justify-content: center;
             align-items: center;
         }
+
+        /* تخصيص القسم المحدد فقط (العنوان والشعار) ليكون بتأثير التوهج والخط المميز */
+        .header .cafe-title {
+            font-family: 'Marhey', sans-serif !important;
+            font-size: 30px;
+            font-weight: 700;
+            color: #d4af37;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.6), 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .header .cafe-subtitle {
+            font-family: 'Great Vibes', cursive !important;
+            font-size: 24px !important;
+            color: #ddd;
+            margin-top: 4px;
+        }
+
+        .header .logo-img {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.8);
+        }
+
         .phone-container {
             width: 100%;
             max-width: 440px;
@@ -82,7 +92,6 @@
         .lang-btn:hover {
             background: #d4af37;
             color: #0b0b0b;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
         }
         .logo-img {
             width: 105px;
@@ -92,19 +101,7 @@
             object-fit: cover;
             margin: 0 auto 12px;
             display: block;
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.8);
             background: #000;
-        }
-        .cafe-title {
-            font-size: 30px;
-            font-weight: 700;
-            color: #d4af37;
-            letter-spacing: 1px;
-        }
-        .cafe-subtitle {
-            font-size: 22px !important;
-            color: #ddd;
-            margin-top: 4px;
         }
         .content {
             padding: 22px;
@@ -136,19 +133,16 @@
             flex-direction: column;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
             backdrop-filter: blur(6px);
         }
         .action-card:hover {
             background: rgba(212, 175, 55, 0.2);
             border-color: #d4af37;
             transform: translateY(-4px);
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
         }
         .action-card i {
             font-size: 28px;
             color: #d4af37;
-            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.8));
         }
         .action-card span {
             font-size: 18px;
@@ -172,13 +166,11 @@
             font-size: 22px;
             text-decoration: none;
             background: rgba(20, 20, 20, 0.9);
-            box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
             transition: all 0.3s ease;
         }
         .social-icons a:hover {
             background: #d4af37;
             color: #0b0b0b;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.9);
         }
         .footer-brand {
             text-align: center;
@@ -200,13 +192,11 @@
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
             transition: all 0.3s ease;
         }
         .category-card:hover {
             border-color: #d4af37;
             background: rgba(212, 175, 55, 0.15);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
         }
         .category-info {
             display: flex;
@@ -218,7 +208,6 @@
             color: #d4af37;
             width: 35px;
             text-align: center;
-            filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.8));
         }
         .category-info div h3 {
             font-size: 20px;
@@ -263,12 +252,10 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
             transition: all 0.2s ease;
         }
         .item-row:hover {
             border-color: #d4af37;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
         .item-name {
             font-size: 18px;
@@ -276,7 +263,7 @@
             color: #fff;
         }
         .item-price {
-            font-size: 19px !important;
+            font-size: 19px;
             font-weight: 700;
             color: #d4af37;
             direction: ltr;
