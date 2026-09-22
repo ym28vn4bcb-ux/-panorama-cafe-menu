@@ -4,15 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بانوراما الشرق - Panorama Cafe</title>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <!-- استدعاء خطوط قوية: خط رقعة تقليدي للعربي وخط مائل مشلبك للإنجليزي -->
+    <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=Great+Vibes&family=Marhey:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Amiri', serif;
         }
+        /* تطبيق خط الرقعة الكلاسيكي والجميل للعربي بالكامل مع تأثير التوهج */
+        body, html, h1, h2, h3, span, p, button, a {
+            font-family: 'Marhey', 'Reem Kufi', sans-serif !important;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* تخصيص النصوص الإنجليزية لتكون بخط مائل مشلبك وفخم وبدون جلو (بدون توهج) */
+        .en-font, .cafe-subtitle, .footer-brand span, .item-price, [lang="en"] {
+            font-family: 'Great Vibes', cursive !important;
+            font-size: 1.3em !important;
+            text-shadow: none !important;
+            letter-spacing: 1px;
+        }
+
         body {
             background-color: #0b0b0b;
             color: #f5f5f5;
@@ -32,11 +46,6 @@
             box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
             display: flex;
             flex-direction: column;
-            animation: fadeIn 0.8s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.98); }
-            to { opacity: 1; transform: scale(1); }
         }
         .phone-container::-webkit-scrollbar {
             width: 5px;
@@ -73,7 +82,7 @@
         .lang-btn:hover {
             background: #d4af37;
             color: #0b0b0b;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
         }
         .logo-img {
             width: 105px;
@@ -83,27 +92,19 @@
             object-fit: cover;
             margin: 0 auto 12px;
             display: block;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.8);
             background: #000;
-            transition: transform 0.4s ease;
-        }
-        .logo-img:hover {
-            transform: scale(1.05);
         }
         .cafe-title {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: 700;
             color: #d4af37;
-            letter-spacing: 1.5px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+            letter-spacing: 1px;
         }
         .cafe-subtitle {
-            font-size: 15px;
+            font-size: 22px !important;
             color: #ddd;
-            font-style: italic;
-            margin-top: 3px;
-            font-weight: 400;
-            letter-spacing: 1px;
+            margin-top: 4px;
         }
         .content {
             padding: 22px;
@@ -130,30 +131,27 @@
             text-align: center;
             color: #fff;
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
             backdrop-filter: blur(6px);
         }
-        .action-card:hover, .action-card:active {
+        .action-card:hover {
             background: rgba(212, 175, 55, 0.2);
             border-color: #d4af37;
             transform: translateY(-4px);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
         }
         .action-card i {
             font-size: 28px;
             color: #d4af37;
-            transition: transform 0.3s ease;
-        }
-        .action-card:hover i {
-            transform: scale(1.15);
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.8));
         }
         .action-card span {
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 700;
         }
         .social-icons {
@@ -174,27 +172,24 @@
             font-size: 22px;
             text-decoration: none;
             background: rgba(20, 20, 20, 0.9);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
         .social-icons a:hover {
             background: #d4af37;
             color: #0b0b0b;
-            transform: scale(1.1);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.9);
         }
         .footer-brand {
             text-align: center;
-            font-size: 15px;
-            color: #999;
+            font-size: 16px;
+            color: #aaa;
             margin-top: 10px;
-            letter-spacing: 1px;
         }
         .category-list {
             display: flex;
             flex-direction: column;
             gap: 14px;
-            animation: fadeIn 0.5s ease-in-out;
         }
         .category-card {
             background: rgba(20, 20, 20, 0.92);
@@ -205,14 +200,13 @@
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
         .category-card:hover {
             border-color: #d4af37;
             background: rgba(212, 175, 55, 0.15);
-            transform: translateX(-4px);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
         }
         .category-info {
             display: flex;
@@ -224,14 +218,15 @@
             color: #d4af37;
             width: 35px;
             text-align: center;
+            filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.8));
         }
         .category-info div h3 {
-            font-size: 19px;
+            font-size: 20px;
             font-weight: 700;
             color: #fff;
         }
         .category-info div p {
-            font-size: 14px;
+            font-size: 15px;
             color: #ccc;
         }
         .category-card > i {
@@ -242,27 +237,22 @@
             background: transparent;
             border: none;
             color: #d4af37;
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 8px;
             margin-bottom: 20px;
-            transition: transform 0.2s ease;
-        }
-        .back-btn:hover {
-            transform: translateX(4px);
         }
         .section-header-title {
             text-align: center;
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
             color: #d4af37;
             margin-bottom: 22px;
             border-bottom: 1.5px dashed rgba(212, 175, 55, 0.5);
             padding-bottom: 12px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         .item-row {
             background: rgba(20, 20, 20, 0.88);
@@ -273,21 +263,20 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
             transition: all 0.2s ease;
-            animation: fadeIn 0.4s ease-in-out;
         }
         .item-row:hover {
             border-color: #d4af37;
-            background: rgba(30, 30, 30, 0.95);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
         .item-name {
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 700;
             color: #fff;
         }
         .item-price {
-            font-size: 17px;
+            font-size: 19px !important;
             font-weight: 700;
             color: #d4af37;
             direction: ltr;
@@ -303,11 +292,11 @@
     <div class="header">
         <div class="top-bar">
             <button class="lang-btn" onclick="toggleLang()">EN / عربي</button>
-            <span style="font-size: 15px; color: #d4af37; font-weight: 700;" id="location-text">الزرقاء - ضاحية الأميرة سلمى</span>
+            <span style="font-size: 16px; color: #d4af37; font-weight: 700;" id="location-text">الزرقاء - ضاحية الأميرة سلمى</span>
         </div>
         <img src="logo.jpg" alt="Panorama Cafe Logo" class="logo-img">
         <h1 class="cafe-title">بانوراما الشرق</h1>
-        <p class="cafe-subtitle">PANORAMA CAFE</p>
+        <p class="cafe-subtitle">Panorama Cafe</p>
     </div>
 
     <div class="content" id="main-content">
@@ -337,7 +326,7 @@
                 <a href="https://wa.me/962779970924" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
 
-            <p class="footer-brand">PANORAMA CAFE<br><span style="font-size: 13px; color: #888;">More Than A Café</span></p>
+            <p class="footer-brand">PANORAMA CAFE<br><span style="color: #aaa;">More Than A Café</span></p>
         </div>
 
         <div id="categories-view" class="hidden">
