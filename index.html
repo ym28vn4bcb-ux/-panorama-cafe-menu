@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بانوراما الشرق - Panorama Cafe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        body {
+            background-color: #0b0b0b;
+            color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .phone-container {
+            width: 100%;
+            max-width: 430px;
+            height: 100vh;
+            max-height: 932px;
+            background: linear-gradient(rgba(11, 11, 11, 0.85), rgba(11, 11, 11, 0.95)), url('https://i.ibb.co/1G05481/image-11.png') no-repeat center center/cover;
+            position: relative;
+            overflow-y: auto;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+        }
+        .phone-container::-webkit-scrollbar {
+            width: 4px;
+        }
+        .phone-container::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 10px;
+        }
+        .header {
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(11, 11, 11, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .lang-btn {
+            background: transparent;
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .logo-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 2px solid #d4af37;
+            object-fit: cover;
+            margin: 0 auto 10px;
+            display: block;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+        .cafe-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: #d4af37;
+            letter-spacing: 1px;
+        }
+        .cafe-subtitle {
+            font-size: 14px;
+            color: #ccc;
+            font-style: italic;
+            margin-top: 2px;
+        }
+        .content {
+            padding: 20px;
+            flex: 1;
+        }
+        .home-view {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+        .action-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .action-card {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 12px;
+            padding: 20px 10px;
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .action-card:hover, .action-card:active {
+            background: rgba(212, 175, 55, 0.15);
+            border-color: #d4af37;
+            transform: translateY(-2px);
+        }
+        .action-card i {
+            font-size: 24px;
+            color: #d4af37;
+        }
+        .action-card span {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 25px 0 15px;
+        }
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 1px solid #d4af37;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #d4af37;
+            font-size: 20px;
+            text-decoration: none;
+            background: rgba(20, 20, 20, 0.9);
+            transition: 0.3s;
+        }
+        .social-icons a:hover {
+            background: #d4af37;
+            color: #0b0b0b;
+        }
+        .footer-brand {
+            text-align: center;
+            font-size: 13px;
+            color: #888;
+            margin-top: 10px;
+            letter-spacing: 0.5px;
+        }
+        /* Menu Categories View */
+        .category-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .category-card {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .category-card:hover {
+            border-color: #d4af37;
+            background: rgba(212, 175, 55, 0.1);
+        }
+        .category-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .category-info i {
+            font-size: 22px;
+            color: #d4af37;
+            width: 30px;
+            text-align: center;
+        }
+        .category-info div h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .category-info div p {
+            font-size: 12px;
+            color: #aaa;
+        }
+        .category-card > i {
+            color: #d4af37;
+        }
+        /* Items View */
+        .back-btn {
+            background: transparent;
+            border: none;
+            color: #d4af37;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .section-header-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 20px;
+            border-bottom: 1px dashed rgba(212, 175, 55, 0.4);
+            padding-bottom: 10px;
+        }
+        .item-row {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .item-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+        }
+        .item-price {
+            font-size: 15px;
+            font-weight: 700;
+            color: #d4af37;
+            direction: ltr;
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="phone-container">
+    <!-- Header -->
+    <div class="header">
+        <div class="top-bar">
+            <button class="lang-btn" onclick="toggleLang()">EN / عربي</button>
+            <span style="font-size: 13px; color: #d4af37;" id="location-text">الزرقاء - مدينة الشرق</span>
+        </div>
+        <img src="https://i.ibb.co/3ykM343/image-8.png" alt="Panorama Cafe Logo" class="logo-img">
+        <h1 class="cafe-title">بانوراما الشرق</h1>
+        <p class="cafe-subtitle">PANORAMA CAFE</p>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content" id="main-content">
+        <!-- HOME VIEW -->
+        <div id="home-view" class="home-view">
+            <div class="action-grid">
+                <a href="#" class="action-card" onclick="showCategories(); return false;">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span id="txt-menu">تصفح المنيو</span>
+                </a>
+                <a href="https://maps.app.goo.gl/ChIJ02BBfvlvGxURbjp4JILR6vE" target="_blank" class="action-card">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span id="txt-loc">موقعنا</span>
+                </a>
+                <a href="https://search.google.com/local/writereview?placeid=ChIJ02BBfvlvGxURbjp4JILR6vE" target="_blank" class="action-card">
+                    <i class="fa-solid fa-star"></i>
+                    <span id="txt-rate">قيمنا على جوجل</span>
+                </a>
+                <a href="tel:0779970924" class="action-card">
+                    <i class="fa-solid fa-phone"></i>
+                    <span id="txt-contact">تواصل معنا</span>
+                </a>
+            </div>
+
+            <div class="social-icons">
+                <a href="https://www.instagram.com/panoramacafe_jo?stkn=Z25ndXBkM3I5ZHU3" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/1BGKZZVhKh/?mibextid=wwXIfr" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://wa.me/962779970924" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+
+            <p class="footer-brand">PANORAMA CAFE<br><span style="font-size: 11px; color: #77;">More Than A Café</span></p>
+        </div>
+
+        <!-- CATEGORIES VIEW -->
+        <div id="categories-view" class="hidden">
+            <button class="back-btn" onclick="showHome()"><i class="fa-solid fa-arrow-right"></i> <span id="txt-back-home">الرئيسية</span></button>
+            <div class="section-header-title" id="txt-menu-title">قائمة الطعام / Our Menu</div>
+            <div class="category-list" id="cat-list-container"></div>
+        </div>
+
+        <!-- ITEMS VIEW -->
+        <div id="items-view" class="hidden">
+            <button class="back-btn" onclick="showCategories()"><i class="fa-solid fa-arrow-right"></i> <span id="txt-back-menu">العودة للأقسام</span></button>
+            <div class="section-header-title" id="category-title-header">اسم القسم</div>
+            <div id="items-container"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const menuData = {
+        ar: {
+            menu: "تصفح المنيو",
+            loc: "موقعنا",
+            rate: "قيمنا على جوجل",
+            contact: "تواصل معنا",
+            backHome: "الرئيسية",
+            backMenu: "العودة للأقسام",
+            menuTitle: "قائمة الطعام / Our Menu",
+            categories: [
+                { id: "hot", name: "مشروبات ساخنة", icon: "fa-mug-hot", items: [
+                    { name: "قهوة تركي / سنجل", price: "1.75 JD" },
+                    { name: "قهوة تركي / دبل", price: "2.25 JD" },
+                    { name: "اسبريسو / سنجل", price: "2.00 JD" },
+                    { name: "اسبريسو / دبل", price: "2.50 JD" },
+                    { name: "امريكانو", price: "2.50 JD" },
+                    { name: "لاتيه", price: "2.50 JD" },
+                    { name: "لاتيه كراميل", price: "2.75 JD" },
+                    { name: "لاتيه فانيلا", price: "2.50 JD" },
+                    { name: "لاتيه تشوكلت", price: "2.50 JD" },
+                    { name: "موكا كراميل", price: "2.50 JD" },
+                    { name: "موكا دارك", price: "2.50 JD" },
+                    { name: "كابتشينو", price: "3.00 JD" },
+                    { name: "هوت تشوكلت", price: "3.00 JD" },
+                    { name: "نسكافيه 3X1", price: "2.00 JD" },
+                    { name: "نسكافيه بلاك", price: "2.50 JD" },
+                    { name: "نسكافيه بلاك مع حليب", price: "3.00 JD" },
+                    { name: "شاي", price: "1.50 JD" },
+                    { name: "شاي كرك", price: "2.50 JD" },
+                    { name: "أعشاب", price: "1.50 JD" },
+                    { name: "سحلب (موسمي)", price: "3.00 JD" },
+                    { name: "فلات وايت", price: "2.00 JD" },
+                    { name: "اسبريسو ميكاتو", price: "2.00 JD" },
+                    { name: "لاتيه لوتس", price: "3.00 JD" },
+                    { name: "كوفي كريم", price: "2.50 JD" },
+                    { name: "اورانج امريكانو", price: "2.50 JD" }
+                ]},
+                { id: "ice", name: "آيس كوفي", icon: "fa-glass-water", items: [
+                    { name: "آيس لاتيه فانيلا", price: "3.00 JD" },
+                    { name: "آيس لاتيه تشوكلت", price: "3.00 JD" },
+                    { name: "آيس كراميل ماكياتو", price: "3.00 JD" },
+                    { name: "آيس كوفي كلاسيك", price: "2.50 JD" },
+                    { name: "آيس كوفي الشرق سموذي", price: "3.00 JD" },
+                    { name: "آيس موكا كراميل", price: "3.00 JD" },
+                    { name: "آيس موكا دارك", price: "3.00 JD" },
+                    { name: "آيس كابتشينو", price: "3.50 JD" },
+                    { name: "فرابتشينو كراميل", price: "4.00 JD" },
+                    { name: "فرابتشينو تشوكلت", price: "4.00 JD" },
+                    { name: "فرابتشينو بستانشيو", price: "4.00 JD" },
+                    { name: "آيس إسبريسو الفريدو", price: "2.50 JD" },
+                    { name: "آيس أمريكانو", price: "2.50 JD" },
+                    { name: "آيس لاتيه لوتس", price: "3.00 JD" },
+                    { name: "آيس لاتيه ستروبيري", price: "3.00 JD" },
+                    { name: "آيس كوكو نت سبانيش لاتيه", price: "3.00 JD" },
+                    { name: "أفوكاتو", price: "3.50 JD" }
+                ]},
+                { id: "juices", name: "كوكتيل وعصائر طبيعية", icon: "fa-blender", items: [
+                    { name: "كوكتيل الشرق", price: "4.00 JD" },
+                    { name: "موز وحليب", price: "3.00 JD" },
+                    { name: "موز وحليب وفراولة", price: "3.00 JD" },
+                    { name: "موز وفراولة", price: "2.75 JD" },
+                    { name: "موز وفراولة ومانجا (بدون حليب)", price: "1.75 JD" },
+                    { name: "مانجا", price: "3.00 JD" },
+                    { name: "عصير ليمون", price: "2.75 JD" },
+                    { name: "عصير برتقال", price: "2.75 JD" },
+                    { name: "برتقال وفراولة", price: "3.50 JD" },
+                    { name: "عصير ليمون وبرتقال وزنجبيل", price: "3.00 JD" },
+                    { name: "كيوي", price: "3.25 JD" },
+                    { name: "كيوي وفراولة", price: "3.75 JD" },
+                    { name: "كيوي وليمون", price: "3.75 JD" },
+                    { name: "كيوي ومانجا", price: "3.00 JD" },
+                    { name: "كيوي ونعنع", price: "3.00 JD" },
+                    { name: "ليمون ونعنع", price: "3.25 JD" },
+                    { name: "أناناس سموذي", price: "3.00 JD" },
+                    { name: "موز ومانجا وباشن", price: "3.00 JD" },
+                    { name: "أفوكادو", price: "4.50 JD" },
+                    { name: "أفوكادو ومانجا", price: "4.50 JD" },
+                    { name: "أفوكادو وموز وحليب", price: "3.50 JD" },
+                    { name: "دارين", price: "3.50 JD" }
+                ]},
+                { id: "mocktail", name: "موكتيل وسموذي", icon: "fa-champagne-glasses", items: [
+                    { name: "مكس الشرق", price: "4.00 JD" },
+                    { name: "مكس بيري", price: "3.00 JD" },
+                    { name: "مكس لافندر", price: "3.00 JD" },
+                    { name: "باشن فروت", price: "3.00 JD" },
+                    { name: "باشن ومانجا", price: "3.00 JD" },
+                    { name: "باشن وخوخ", price: "3.00 JD" },
+                    { name: "خوخ ومانجا", price: "3.00 JD" },
+                    { name: "بينا كولادا", price: "3.00 JD" },
+                    { name: "جرينادين", price: "3.00 JD" },
+                    { name: "بلوهاوايان", price: "3.00 JD" },
+                    { name: "موهيتو", price: "3.00 JD" }
+                ]},
+                { id: "milkshake", name: "ميلك شيك ومشروبات غازية وتسالي", icon: "fa-ice-cream", items: [
+                    { name: "ميلك شيك عربية", price: "4.00 JD" },
+                    { name: "ميلك شيك لوتس", price: "4.00 JD" },
+                    { name: "ميلك شيك أوريو", price: "4.00 JD" },
+                    { name: "ميلك شيك سنيكرز", price: "4.00 JD" },
+                    { name: "ميلك شيك تشوكلت", price: "4.00 JD" },
+                    { name: "ميلك شيك فراولة", price: "4.00 JD" },
+                    { name: "مياه معدنية", price: "0.50 JD" },
+                    { name: "مشروبات غازية", price: "1.50 JD" },
+                    { name: "بوم بوم", price: "1.75 JD" },
+                    { name: "بوم بوم مع نكهة", price: "3.00 JD" },
+                    { name: "ريد بول", price: "2.75 JD" },
+                    { name: "ريد بول مع نكهة", price: "3.75 JD" },
+                    { name: "مكسرات", price: "3.00 JD" },
+                    { name: "بوشار", price: "1.00 JD" },
+                    { name: "ذرة", price: "1.50 JD" }
+                ]},
+                { id: "shisha", name: "الأراجيل", icon: "fa-smoking", items: [
+                    { name: "أرجيلة الشرق", price: "5.00 JD" },
+                    { name: "أرجيلة النخلة", price: "5.00 JD" },
+                    { name: "أرجيلة تفاحتين مزايا", price: "4.00 JD" },
+                    { name: "أرجيلة ليمون ونعنع", price: "4.00 JD" },
+                    { name: "أرجيلة علكة وقرفة", price: "4.00 JD" },
+                    { name: "أرجيلة بطيخ ونعنع", price: "4.00 JD" },
+                    { name: "أرجيلة كاندي", price: "4.00 JD" },
+                    { name: "أرجيلة بلوبيري", price: "4.00 JD" },
+                    { name: "أرجيلة علكة سهم", price: "4.00 JD" },
+                    { name: "أرجيلة LOVE", price: "4.00 JD" },
+                    { name: "أرجيلة علكة ونعنع", price: "4.00 JD" },
+                    { name: "أرجيلة مانجا ودراق", price: "4.00 JD" },
+                    { name: "أرجيلة عنب وتوت", price: "4.00 JD" },
+                    { name: "تغيير الرأس", price: "2.00 JD" },
+                    { name: "خدمة الأراجيل", price: "3.00 JD" }
+                ]}
+            ]
+        },
+        en: {
+            menu: "View Menu",
+            loc: "Our Location",
+            rate: "Rate Us",
+            contact: "Contact Us",
+            backHome: "Home",
+            backMenu: "Back to Menu",
+            menuTitle: "Our Menu",
+            categories: [
+                { id: "hot", name: "Hot Drinks", icon: "fa-mug-hot", items: [
+                    { name: "Turkish Coffee / Single", price: "1.75 JD" },
+                    { name: "Turkish Coffee / Double", price: "2.25 JD" },
+                    { name: "Espresso / Single", price: "2.00 JD" },
+                    { name: "Espresso / Double", price: "2.50 JD" },
+                    { name: "Americano", price: "2.50 JD" },
+                    { name: "Latte", price: "2.50 JD" },
+                    { name: "Caramel Latte", price: "2.75 JD" },
+                    { name: "Vanilla Latte", price: "2.50 JD" },
+                    { name: "Chocolate Latte", price: "2.50 JD" },
+                    { name: "Caramel Mocha", price: "2.50 JD" },
+                    { name: "Dark Mocha", price: "2.50 JD" },
+                    { name: "Cappuccino", price: "3.00 JD" },
+                    { name: "Hot Chocolate", price: "3.00 JD" },
+                    { name: "Nescafe 3X1", price: "2.00 JD" },
+                    { name: "Black Nescafe", price: "2.50 JD" },
+                    { name: "Black Nescafe with Milk", price: "3.00 JD" },
+                    { name: "Tea", price: "1.50 JD" },
+                    { name: "Karak Tea", price: "2.50 JD" },
+                    { name: "Herbal Tea", price: "1.50 JD" },
+                    { name: "Salab (Seasonal)", price: "3.00 JD" },
+                    { name: "Flat White", price: "2.00 JD" },
+                    { name: "Espresso Macchiato", price: "2.00 JD" },
+                    { name: "Lotus Latte", price: "3.00 JD" },
+                    { name: "Coffee Cream", price: "2.50 JD" },
+                    { name: "Orange Americano", price: "2.50 JD" }
+                ]},
+                { id: "ice", name: "Ice Coffee", icon: "fa-glass-water", items: [
+                    { name: "Iced Vanilla Latte", price: "3.00 JD" },
+                    { name: "Iced Chocolate Latte", price: "3.00 JD" },
+                    { name: "Iced Caramel Macchiato", price: "3.00 JD" },
+                    { name: "Iced Classic Coffee", price: "2.50 JD" },
+                    { name: "Iced Al-Sharq Smoothie", price: "3.00 JD" },
+                    { name: "Iced Caramel Mocha", price: "3.00 JD" },
+                    { name: "Iced Dark Mocha", price: "3.00 JD" },
+                    { name: "Iced Cappuccino", price: "3.50 JD" },
+                    { name: "Caramel Frappuccino", price: "4.00 JD" },
+                    { name: "Chocolate Frappuccino", price: "4.00 JD" },
+                    { name: "Pistachio Frappuccino", price: "4.00 JD" },
+                    { name: "Iced Espresso Alfredo", price: "2.50 JD" },
+                    { name: "Iced Americano", price: "2.50 JD" },
+                    { name: "Iced Lotus Latte", price: "3.00 JD" },
+                    { name: "Iced Strawberry Latte", price: "3.00 JD" },
+                    { name: "Iced Coconut Spanish Latte", price: "3.00 JD" },
+                    { name: "Affogato", price: "3.50 JD" }
+                ]},
+                { id: "juices", name: "Cocktails & Fresh Juices", icon: "fa-blender", items: [
+                    { name: "Al-Sharq Cocktail", price: "4.00 JD" },
+                    { name: "Banana & Milk", price: "3.00 JD" },
+                    { name: "Banana, Milk & Strawberry", price: "3.00 JD" },
+                    { name: "Banana & Strawberry", price: "2.75 JD" },
+                    { name: "Banana, Strawberry & Mango (No Milk)", price: "1.75 JD" },
+                    { name: "Mango", price: "3.00 JD" },
+                    { name: "Lemon Juice", price: "2.75 JD" },
+                    { name: "Orange Juice", price: "2.75 JD" },
+                    { name: "Orange & Strawberry", price: "3.50 JD" },
+                    { name: "Lemon, Orange & Ginger", price: "3.00 JD" },
+                    { name: "Kiwi", price: "3.25 JD" },
+                    { name: "Kiwi & Strawberry", price: "3.75 JD" },
+                    { name: "Kiwi & Lemon", price: "3.75 JD" },
+                    { name: "Kiwi & Mango", price: "3.00 JD" },
+                    { name: "Kiwi & Mint", price: "3.00 JD" },
+                    { name: "Lemon & Mint", price: "3.25 JD" },
+                    { name: "Pineapple Smoothie", price: "3.00 JD" },
+                    { name: "Banana, Mango & Passion", price: "3.00 JD" },
+                    { name: "Avocado", price: "4.50 JD" },
+                    { name: "Avocado & Mango", price: "4.50 JD" },
+                    { name: "Avocado, Banana & Milk", price: "3.50 JD" },
+                    { name: "Dareen", price: "3.50 JD" }
+                ]},
+                { id: "mocktail", name: "Mocktail & Smoothie", icon: "fa-champagne-glasses", items: [
+                    { name: "Al-Sharq Mix", price: "4.00 JD" },
+                    { name: "Berry Mix", price: "3.00 JD" },
+                    { name: "Lavender Mix", price: "3.00 JD" },
+                    { name: "Passion Fruit", price: "3.00 JD" },
+                    { name: "Passion & Mango", price: "3.00 JD" },
+                    { name: "Passion & Peach", price: "3.00 JD" },
+                    { name: "Peach & Mango", price: "3.00 JD" },
+                    { name: "Pina Colada", price: "3.00 JD" },
+                    { name: "Grenadine", price: "3.00 JD" },
+                    { name: "Blue Hawaiian", price: "3.00 JD" },
+                    { name: "Mojito", price: "3.00 JD" }
+                ]},
+                { id: "milkshake", name: "Milkshake & Soft Drinks & Snacks", icon: "fa-ice-cream", items: [
+                    { name: "Arabic Milkshake", price: "4.00 JD" },
+                    { name: "Lotus Milkshake", price: "4.00 JD" },
+                    { name: "Oreo Milkshake", price: "4.00 JD" },
+                    { name: "Snickers Milkshake", price: "4.00 JD" },
+                    { name: "Chocolate Milkshake", price: "4.00 JD" },
+                    { name: "Strawberry Milkshake", price: "4.00 JD" },
+                    { name: "Mineral Water", price: "0.50 JD" },
+                    { name: "Soft Drinks", price: "1.50 JD" },
+                    { name: "Bom Bom", price: "1.75 JD" },
+                    { name: "Bom Bom Flavored", price: "3.00 JD" },
+                    { name: "Red Bull", price: "2.75 JD" },
+                    { name: "Red Bull Flavored", price: "3.75 JD" },
+                    { name: "Nuts", price: "3.00 JD" },
+                    { name: "Popcorn", price: "1.00 JD" },
+                    { name: "Corn", price: "1.50 JD" }
+                ]},
+                { id: "shisha", name: "Shisha", icon: "fa-smoking", items: [
+                    { name: "Al-Sharq Shisha", price: "5.00 JD" },
+                    { name: "Al-Nakhlah Shisha", price: "5.00 JD" },
+                    { name: "Mazaya Two Apples Shisha", price: "4.00 JD" },
+                    { name: "Lemon & Mint Shisha", price: "4.00 JD" },
+                    { name: "Gum & Cinnamon Shisha", price: "4.00 JD" },
+                    { name: "Watermelon & Mint Shisha", price: "4.00 JD" },
+                    { name: "Candy Shisha", price: "4.00 JD" },
+                    { name: "Blueberry Shisha", price: "4.00 JD" },
+                    { name: "Sahm Gum Shisha", price: "4.00 JD" },
+                    { name: "LOVE Shisha", price: "4.00 JD" },
+                    { name: "Gum & Mint Shisha", price: "4.00 JD" },
+                    { name: "Mango & Peach Shisha", price: "4.00 JD" },
+                    { name: "Grape & Berry Shisha", price: "4.00 JD" },
+                    { name: "Head Change", price: "2.00 JD" },
+                    { name: "Shisha Service", price: "3.00 JD" }
+                ]}
+            ]
+        }
+    };
+
+    let currentLang = 'ar';
+
+    function toggleLang() {
+        currentLang = currentLang === 'ar' ? 'en' : 'ar';
+        document.documentElement.lang = currentLang;
+        document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+        updateUI();
+    }
+
+    function updateUI() {
+        const d = menuData[currentLang];
+        document.getElementById('txt-menu').innerText = d.menu;
+        document.getElementById('txt-loc').innerText = d.loc;
+        document.getElementById('txt-rate').innerText = d.rate;
+        document.getElementById('txt-contact').innerText = d.contact;
+        document.getElementById('txt-back-home').innerText = d.backHome;
+        document.getElementById('txt-back-menu').innerText = d.backMenu;
+        document.getElementById('txt-menu-title').innerText = d.menuTitle;
+        document.getElementById('location-text').innerText = currentLang === 'ar' ? 'الزرقاء - مدينة الشرق' : 'Zarqa - Madinat Al-Sharq';
+    }
+
+    function showHome() {
+        document.getElementById('home-view').classList.remove('hidden');
+        document.getElementById('categories-view').classList.add('hidden');
+        document.getElementById('items-view').classList.add('hidden');
+    }
+
+    function showCategories() {
+        document.getElementById('home-view').classList.add('hidden');
+        document.getElementById('categories-view').classList.remove('hidden');
+        document.getElementById('items-view').classList.add('hidden');
+
+        const container = document.getElementById('cat-list-container');
+        container.innerHTML = '';
+
+        menuData[currentLang].categories.forEach(cat => {
+            const card = document.createElement('div');
+            card.className = 'category-card';
+            card.onclick = () => showItems(cat.id);
+            card.innerHTML = `
+                <div class="category-info">
+                    <i class="fa-solid ${cat.icon}"></i>
+                    <div>
+                        <h3>${cat.name}</h3>
+                        <p>${cat.items.length} ${currentLang === 'ar' ? 'عناصر' : 'items'}</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-${currentLang === 'ar' ? 'left' : 'right'}"></i>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function showItems(catId) {
+        document.getElementById('categories-view').classList.add('hidden');
+        document.getElementById('items-view').classList.remove('hidden');
+
+        const cat = menuData[currentLang].categories.find(c => c.id === catId);
+        document.getElementById('category-title-header').innerText = cat.name;
+
+        const container = document.getElementById('items-container');
+        container.innerHTML = '';
+
+        cat.items.forEach(item => {
+            const row = document.createElement('div');
+            row.className = 'item-row';
+            row.innerHTML = `
+                <span class="item-name">${item.name}</span>
+                <span class="item-price">${item.price}</span>
+            `;
+            container.appendChild(row);
+        });
+    }
+
+    updateUI();
+</script>
+
+</body>
+</html>
