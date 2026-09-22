@@ -26,7 +26,7 @@
             max-width: 430px;
             height: 100vh;
             max-height: 932px;
-            background: linear-gradient(rgba(11, 11, 11, 0.88), rgba(11, 11, 11, 0.94)), url('logo.jpg') no-repeat center center/cover;
+            background: linear-gradient(rgba(11, 11, 11, 0.88), rgba(11, 11, 11, 0.94)), url('https://i.ibb.co/3ykM343/image-8.png') no-repeat center center/cover;
             position: relative;
             overflow-y: auto;
             box-shadow: 0 0 30px rgba(0,0,0,0.8);
@@ -260,9 +260,9 @@
     <div class="header">
         <div class="top-bar">
             <button class="lang-btn" onclick="toggleLang()">EN / عربي</button>
-            <span style="font-size: 13px; color: #d4af37;" id="location-text">الزرقاء - مدينة الشرق</span>
+            <span style="font-size: 13px; color: #d4af37;" id="location-text">الزرقاء - ضاحية الأميرة سلمى</span>
         </div>
-        <img src="logo.jpg" alt="Panorama Cafe Logo" class="logo-img">
+        <img src="https://i.ibb.co/3ykM343/image-8.png" alt="Panorama Cafe Logo" class="logo-img">
         <h1 class="cafe-title">بانوراما الشرق</h1>
         <p class="cafe-subtitle">PANORAMA CAFE</p>
     </div>
@@ -278,7 +278,7 @@
                     <i class="fa-solid fa-location-dot"></i>
                     <span id="txt-loc">موقعنا</span>
                 </a>
-                <a href="https://maps.app.goo.gl/cfSF1HZGTdfAXseH8?g_st=ic" target="_blank" class="action-card">
+                <a href="https://search.google.com/local/writereview?placeid=ChIJ02BBfvlvGxURbjp4JILR6vE" target="_blank" class="action-card">
                     <i class="fa-solid fa-star"></i>
                     <span id="txt-rate">قيمنا على جوجل</span>
                 </a>
@@ -589,7 +589,7 @@
         document.getElementById('txt-back-home').innerText = d.backHome;
         document.getElementById('txt-back-menu').innerText = d.backMenu;
         document.getElementById('txt-menu-title').innerText = d.menuTitle;
-        document.getElementById('location-text').innerText = currentLang === 'ar' ? 'الزرقاء - مدينة الشرق' : 'Zarqa - Madinat Al-Sharq';
+        document.getElementById('location-text').innerText = currentLang === 'ar' ? 'الزرقاء - ضاحية الأميرة سلمى' : 'Zarqa - Princess Salma Suburb';
     }
 
     function showHome() {
